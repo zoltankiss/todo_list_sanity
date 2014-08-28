@@ -1,0 +1,9 @@
+<div class="inner cover">
+  <h1 class="cover-heading">Make todo lists</h1>
+  <p class="lead">Create, Sort your todo lists. For personal use or as a light-weight project management tool.</p>
+</div>
+
+<% content_for(:links) do %>
+              <li><%= link_to "Sign In", new_user_session_path %></li>
+              <li><%= link_to "Sign Up", new_user_registration_path %></li>
+<% end %>

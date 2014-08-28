@@ -1,14 +1,46 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>TodoTracker</title>
+  <title>Todo Tracker</title>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
 </head>
 <body>
 
-<%= yield %>
+
+
+  <div class="site-wrapper">
+
+    <div class="site-wrapper-inner">
+
+      <div class="cover-container">
+
+        <div class="masthead clearfix">
+          <div class="inner">
+            <h3 class="masthead-brand"><%= link_to "Todo Tracker", root_path %></h3>
+            <ul class="nav masthead-nav">
+              <%= yield :links %>
+            </ul>
+          </div>
+        </div>
+
+        <p class="notice"><%= notice %></p>
+        <p class="alert"><%= alert %></p>
+
+        <%= yield %>
+
+        <div class="mastfoot">
+          <div class="inner">
+            &copy; todo tracker
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
 
 </body>
 </html>

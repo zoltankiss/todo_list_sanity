@@ -4,7 +4,15 @@
   <title>Todo List Sanity</title>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <script src="//code.jquery.com/ui/1.11.1/jquery-ui.js"></script>
   <%= csrf_meta_tags %>
+
+  <style>
+    #sortable { list-style-type: none; margin: 0; padding: 0; width: 60%; }
+    #sortable li { margin: 0 3px 3px 3px; padding: 0.4em; padding-left: 1.5em; font-size: 1.4em; height: 18px; }
+    #sortable li span { position: absolute; margin-left: -1.3em; }
+  </style>
+
 </head>
 <body>
 
@@ -44,6 +52,13 @@
     </div>
 
   </div>
+
+  <script>
+    $(function() {
+      $( "#sortable" ).sortable();
+      $( "#sortable" ).disableSelection();
+    });
+  </script>
 
 </body>
 </html>

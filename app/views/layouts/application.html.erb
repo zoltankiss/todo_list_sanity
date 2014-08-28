@@ -21,6 +21,9 @@
             <h3 class="masthead-brand"><%= link_to image_tag('logo.png'), root_path %></h3>
             <ul class="nav masthead-nav">
               <%= yield :links %>
+              <% if signed_in? %>
+                <li><%= link_to 'Sign Out', destroy_user_session_path, method: :delete %></li>
+              <% end %>
             </ul>
           </div>
         </div>

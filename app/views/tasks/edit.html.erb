@@ -2,5 +2,7 @@
 
 <%= render 'form' %>
 
-<%= link_to 'Show', @task %> |
-<%= link_to 'Back', tasks_path %>
+<% content_for(:links) do %>
+  <li><%= link_to 'Delete', project_task_path(@project, @task), method: :delete %></li>
+  <li><%= link_to 'Back', project_tasks_path %></li>
+<% end %>

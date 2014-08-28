@@ -1,0 +1,16 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @project.name %>
+</p>
+
+<p>
+  <strong>User:</strong>
+  <%= @project.user %>
+</p>
+
+<% content_for(:links) do %>
+  <li><%= link_to 'Edit', edit_project_path(@project) %></li>
+  <li><%= link_to 'Back', projects_path %></li>
+<% end %>

@@ -1,0 +1,8 @@
+<h1>Editing project</h1>
+
+<%= render 'form' %>
+
+<% content_for(:links) do %>
+  <li><%= link_to 'Show', @project %></li>
+  <li><%= link_to 'Back', projects_path %></li>
+<% end %>

@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Todo Tracker</title>
+  <title>Todo List Sanity</title>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
@@ -18,7 +18,7 @@
 
         <div class="masthead clearfix">
           <div class="inner">
-            <h3 class="masthead-brand"><%= link_to "Todo Tracker", root_path %></h3>
+            <h3 class="masthead-brand"><%= link_to image_tag('logo.png'), root_path %></h3>
             <ul class="nav masthead-nav">
               <%= yield :links %>
             </ul>
@@ -32,7 +32,7 @@
 
         <div class="mastfoot">
           <div class="inner">
-            &copy; todo tracker
+            &copy; 2014 Todo List Sanity
           </div>
         </div>
 

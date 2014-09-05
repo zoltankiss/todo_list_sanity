@@ -3,6 +3,8 @@ Rails.application.routes.draw do
     resources :tasks
   end
 
+  post 'update_project_task_order' => 'projects#update_project_task_order'
+
   devise_for :users
   root 'pages#home'
   # The priority is based upon order of creation: first created -> highest priority.

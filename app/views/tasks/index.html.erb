@@ -1,14 +1,27 @@
 <h1>Listing tasks</h1>
 
-  <ul id="sortable">
-    <% @tasks.each do |task| %>
-      <li class="ui-state-default">
-        <span class="ui-icon ui-icon-arrowthick-2-n-s">
-          <%= link_to task.title, edit_project_task_path(@project, task) %>
-        </span>
-      </li>
-    <% end %>
-  </ul>
+<ul id="sortable">
+  <% @tasks.each do |task| %>
+    <li class="ui-state-default" id="task_<%= task.id %>">
+      <span class="ui-icon ui-icon-arrowthick-2-n-s">
+        <%= link_to task.title, edit_project_task_path(@project, task) %>
+      </span>
+    </li>
+  <% end %>
+</ul>
+
+<script type="text/javascript">
+  $('#sortable').sortable({
+    update: function (event, ui) {
+      var data = $(this).sortable('serialize');
+      $.ajax({
+          data: data,
+          type: 'POST',
+          url: '/update_project_task_order'
+      });
+    }
+  });
+</script>
 
 <br>
 

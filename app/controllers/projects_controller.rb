@@ -53,6 +53,12 @@ class ProjectsController < ApplicationController
     end
   end
 
+  def update_project_task_order
+    params['task'].map(&:to_i).each_with_index do |id, index|
+      Task.find(id).update_attributes!(order: index)
+    end
+  end
+
   # DELETE /projects/1
   # DELETE /projects/1.json
   def destroy

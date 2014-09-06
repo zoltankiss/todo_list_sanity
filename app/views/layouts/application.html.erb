@@ -26,7 +26,7 @@
 
         <div class="masthead clearfix">
           <div class="inner">
-            <h3 class="masthead-brand"><%= link_to image_tag('logo.png'), root_path %></h3>
+            <h3 class="masthead-brand"><%= link_to image_tag('logo.png'), root_path, class: 'no-hover' %></h3>
             <ul class="nav masthead-nav">
               <%= yield :links %>
               <% if signed_in? %>

@@ -20,9 +20,9 @@ pre {
 
 a {
   color: #000;
-  &:visited {
-    color: #666;
-  }
+}
+
+a:not(.no-hover) {
   &:hover {
     color: #fff;
     background-color: #000;

@@ -1,9 +1,10 @@
-<h1>Listing tasks</h1>
+<h1>Listing Tasks</h1>
 
 <ul id="sortable">
   <% @tasks.each do |task| %>
     <li class="ui-state-default" id="task_<%= task.id %>">
       <span class="ui-icon ui-icon-arrowthick-2-n-s">
+        <%= link_to raw('&#10004;'), project_mark_as_complete_path(@project, task), method: :patch %>&nbsp;
         <%= link_to task.title, edit_project_task_path(@project, task) %>
       </span>
     </li>

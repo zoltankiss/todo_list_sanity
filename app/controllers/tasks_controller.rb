@@ -45,7 +45,7 @@ class TasksController < ApplicationController
   def update
     respond_to do |format|
       if @task.update(task_params)
-        format.html { redirect_to project_task_path(@project, @task), notice: 'Task was successfully updated.' }
+        format.html { redirect_to project_tasks_path(@project), notice: 'Task was successfully updated.' }
         format.json { render :show, status: :ok, location: project_task_path(@project, @task) }
       else
         format.html { render :edit }

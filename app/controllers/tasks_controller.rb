@@ -1,11 +1,12 @@
 class TasksController < ApplicationController
-  before_action :set_task, only: [:show, :edit, :update, :destroy]
+  before_action :set_task, only: [:show, :edit, :update, :destroy, :mark_as_complete, :mark_as_incomplete]
   before_action :set_project
 
   # GET /tasks
   # GET /tasks.json
   def index
-    @tasks = @project.tasks.order(:order)
+    @tasks = @project.tasks.where(finished: false).order(:order)
+    @completed_tasks = @project.tasks.where(finished: true)
   end
 
   # GET /tasks/1
@@ -60,6 +61,16 @@ class TasksController < ApplicationController
       format.html { redirect_to project_tasks_url, notice: 'Task was successfully destroyed.' }
       format.json { head :no_content }
     end
+  end
+
+  def mark_as_complete
+    @task.update_attributes!(finished: true)
+    redirect_to project_tasks_path(@project)
+  end
+
+  def mark_as_incomplete
+    @task.update_attributes!(finished: false)
+    redirect_to project_tasks_path(@project)
   end
 
   private

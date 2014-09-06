@@ -24,8 +24,20 @@
   });
 </script>
 
-<br>
+<hr />
 
+<h1>Completed Tasks</h1>
+
+<center>
+<table>
+  <% @completed_tasks.each do |task| %>
+    <tr>
+      <td><%= link_to 'reassign', project_mark_as_incomplete_path(@project, task), method: :patch %>&nbsp;&nbsp;</td>
+      <td><%= link_to task.title, edit_project_task_path(@project, task) %></td>
+    </tr>
+  <% end %>
+</table>
+</center>
 
 
 <% content_for(:links) do %>

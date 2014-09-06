@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
   resources :projects do
     resources :tasks
+    patch 'mark_as_complete/:id' => 'tasks#mark_as_complete', as: 'mark_as_complete'
+    patch 'mark_as_incomplete/:id' => 'tasks#mark_as_incomplete', as: 'mark_as_incomplete'
   end
 
   post 'update_project_task_order' => 'projects#update_project_task_order'

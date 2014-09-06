@@ -5,7 +5,7 @@ Rails.application.routes.draw do
     patch 'mark_as_incomplete/:id' => 'tasks#mark_as_incomplete', as: 'mark_as_incomplete'
   end
 
-  post 'update_project_task_order' => 'projects#update_project_task_order'
+  post 'update_project_task_order' => 'projects#update_project_task_order', as: 'update_project_task_order'
 
   devise_for :users
   root 'pages#home'

@@ -4,8 +4,6 @@
   <%= link_to project.name, project_tasks_path(project) %>
   &nbsp;|&nbsp;
   <%= link_to 'Edit', edit_project_path(project) %>
-  &nbsp;|&nbsp;
-  <%= link_to 'Destroy', project, method: :delete, data: { confirm: 'Are you sure?' } %>
   <br />
 <% end %>
 

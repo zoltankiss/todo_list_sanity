@@ -1,5 +1,9 @@
 <h1>Listing Tasks</h1>
 
+<p>
+  drag and drop items to change its level of importance
+</p>
+
 <ul id="sortable">
   <% @tasks.each do |task| %>
     <li class="ui-state-default" id="task_<%= task.id %>">

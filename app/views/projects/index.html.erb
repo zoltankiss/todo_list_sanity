@@ -1,9 +1,28 @@
+<link rel="stylesheet" href="//code.jquery.com/ui/1.11.1/themes/smoothness/jquery-ui.css">
+
 <h1>Listing projects</h1>
 
 <% @projects.each do |project| %>
   <%= link_to project.name, project_tasks_path(project) %>
   &nbsp;|&nbsp;
   <%= link_to 'Edit', edit_project_path(project) %>
+  <% if project.user == current_user %>
+    &nbsp;|&nbsp;
+    <button id="share_project_<%= project.id %>">share</button>
+    <div id="share_project_dialog_<%= project.id %>" title="share this project">
+      <%= form_for project, url: project_share_path(project) do |f| %>
+        <%= f.label :user_url_to_share_with %>
+        <%= f.text_field :user_url_to_share_with, id: "user_url_to_share_with_#{project.id}" %>
+        <%= f.submit 'share', id: "share_submit_button_#{project.id}" %>
+      <% end %>
+    </div>
+  <% end %>
+  <script type="text/javascript">
+    $("#share_project_dialog_<%= project.id %>").dialog({ autoOpen: false });
+    $("#share_project_<%= project.id %>").click(function() {
+      $("#share_project_dialog_<%= project.id %>").dialog( "open" );
+    });
+  </script>
   <br />
 <% end %>
 
@@ -11,4 +30,5 @@
 
 <% content_for(:links) do %>
   <li><%= link_to 'New Project', new_project_path %></li>
+  <li><%= link_to 'My Profile', user_path(current_user) %></li>
 <% end %>

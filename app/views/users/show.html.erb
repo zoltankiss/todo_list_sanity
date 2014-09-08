@@ -1,0 +1,9 @@
+<strong>Email:</strong>&nbsp; <%= @user.email %>
+<br />
+<strong>User since:</strong>&nbsp; <%= @user.created_at.to_s %>
+
+<% if signed_in? %>
+  <% content_for(:links) do %>
+    <li><%= link_to 'My Projects', projects_path %></li>
+  <% end %>
+<% end %>

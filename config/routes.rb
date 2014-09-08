@@ -3,12 +3,15 @@ Rails.application.routes.draw do
     resources :tasks
     patch 'mark_as_complete/:id' => 'tasks#mark_as_complete', as: 'mark_as_complete'
     patch 'mark_as_incomplete/:id' => 'tasks#mark_as_incomplete', as: 'mark_as_incomplete'
+    patch 'share' => 'projects#share', as: 'share'
   end
 
   post 'update_project_task_order' => 'projects#update_project_task_order', as: 'update_project_task_order'
 
   devise_for :users
   root 'pages#home'
+
+  resources :users, only: :show
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

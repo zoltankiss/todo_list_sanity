@@ -11,8 +11,8 @@
     <button id="share_project_<%= project.id %>">share</button>
     <div id="share_project_dialog_<%= project.id %>" title="share this project">
       <%= form_for project, url: project_share_path(project) do |f| %>
-        <%= f.label :user_url_to_share_with %>
-        <%= f.text_field :user_url_to_share_with, id: "user_url_to_share_with_#{project.id}" %>
+        <%= f.label :user_email_to_share_with %>
+        <%= f.text_field :user_email_to_share_with, id: "user_email_to_share_with_#{project.id}" %>
         <%= f.submit 'share', id: "share_submit_button_#{project.id}" %>
       <% end %>
     </div>

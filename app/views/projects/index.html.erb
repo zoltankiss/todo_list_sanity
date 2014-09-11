@@ -16,6 +16,9 @@
         <%= f.submit 'share', id: "share_submit_button_#{project.id}" %>
       <% end %>
     </div>
+  <% else %>
+    &nbsp;|&nbsp;
+    <span>(shared by <%= link_to project.user.email, user_path(project.user) %>)</span>
   <% end %>
   <script type="text/javascript">
     $("#share_project_dialog_<%= project.id %>").dialog({ autoOpen: false });

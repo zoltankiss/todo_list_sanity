@@ -23,7 +23,15 @@ class ProjectsController < ApplicationController
   end
 
   def share
-    id = params['project']['user_url_to_share_with'].match(/.*users\/(\d+)/)[1]
+    match = params['project']['user_url_to_share_with'].match(/.*users\/(\d+)/)
+
+    if match.nil?
+      redirect_to projects_path, notice: "Sorry that was an invalid url. <a href='/help'>more help</a>"
+      return
+    else
+      id = match[1]
+    end
+
     user_to_share_with = User.find(id)
     @project.users_shared_with << user_to_share_with
     redirect_to projects_path, notice: "Successfully shared #{@project.name} with #{user_to_share_with.email}"

@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   end
 
   post 'update_project_task_order' => 'projects#update_project_task_order', as: 'update_project_task_order'
+  get 'help' => 'pages#help', as: 'help'
 
   devise_for :users
   root 'pages#home'

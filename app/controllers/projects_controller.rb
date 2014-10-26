@@ -11,6 +11,14 @@ class ProjectsController < ApplicationController
   # GET /projects/1
   # GET /projects/1.json
   def show
+    unless can?(:view, @project)
+      redirect_to(
+        root_path,
+        notice: "this project has not been shared with you yet. "\
+                "Please contact its owner: #{@project.user.email}"
+      )
+      return
+    end
     redirect_to project_tasks_path(@project)
   end
 

@@ -22,6 +22,13 @@ describe 'projects' do
       expect(page).to have_link('project shared')
       expect(page).to_not have_button("share_project_#{project.id}")
       expect(page).to_not have_link('project not shared')
+
+      project_we_should_not_be_able_to_visit = FactoryGirl.create(:project)
+      visit project_path(project_we_should_not_be_able_to_visit)
+      expect(page).to have_content(
+        "this project has not been shared with you yet. "\
+        "Please contact its owner: #{project_we_should_not_be_able_to_visit.user.email}"
+      )
     end
 
     it 'gives meaningful error with invalid email' do

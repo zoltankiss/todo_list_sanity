@@ -49,3 +49,5 @@ group :test do
   gem 'capybara'
 end
 
+gem 'cancancan', '~> 1.9'
+

@@ -17,40 +17,29 @@
 <body>
 
 
-
-  <div class="site-wrapper">
-
-    <div class="site-wrapper-inner">
-
-      <div class="cover-container">
-
-        <div class="masthead clearfix">
-          <div class="inner">
-            <h3 class="masthead-brand"><%= link_to image_tag('logo.png'), root_path, class: 'no-hover' %></h3>
-            <ul class="nav masthead-nav">
-              <%= yield :links %>
-              <% if signed_in? %>
-                <li><%= link_to 'Sign Out', destroy_user_session_path, method: :delete %></li>
-              <% end %>
-            </ul>
-          </div>
-        </div>
-
-        <p class="notice"><%= raw(notice) %></p>
-        <p class="alert"><%= raw(alert) %></p>
-
-        <%= yield %>
-
-        <br /><br /><br />
-        <center>
-          &copy; 2014 Todo List Sanity
-        </center>
-
-      </div>
-
+  <div class="container">
+    <div class="masthead">
+      <h3 class="text-muted"><%= link_to image_tag('logo.png'), root_path, class: 'no-hover' %></h3>
+      <ul class="nav nav-justified">
+        <%= yield :links %>
+        <% if signed_in? %>
+          <li><%= link_to 'Sign Out', destroy_user_session_path, method: :delete %></li>
+        <% end %>
+      </ul>
     </div>
 
+    <p class="notice"><%= raw(notice) %></p>
+    <p class="alert"><%= raw(alert) %></p>
+
+    <%= yield %>
+
+    <br /><br />
+    <center>
+      &copy; 2014 Todo List Sanity
+    </center>
+    <br />
   </div>
+
 
   <script>
     $(function() {

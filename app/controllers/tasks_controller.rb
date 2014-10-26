@@ -31,6 +31,16 @@ class TasksController < ApplicationController
 
     respond_to do |format|
       if @task.save
+        # todo: figure out why UPDATE tasks SET order = order + 1 WHERE project_id = 1 AND finished = 'f'
+        # fails!!!!
+        ActiveRecord::Base.transaction do
+          @project.tasks.where(finished: false).where.not(order: nil).each do |task|
+            task.order = task.order + 1
+            task.save!
+          end
+          @task.order = 0
+          @task.save!
+        end
         format.html { redirect_to project_tasks_path(@project), notice: 'Task was successfully created.' }
         format.json { render :show, status: :created, location: project_task_path(@project, @task) }
       else

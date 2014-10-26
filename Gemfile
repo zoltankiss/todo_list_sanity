@@ -42,6 +42,8 @@ gem 'debugger', group: [:development, :test]
 gem 'factory_girl', group: [:development, :test]
 gem 'faker', group: [:development, :test]
 
+gem 'yaml_db_improved', '~> 1.0'
+
 group :test do
   gem 'rspec-rails'
   gem 'capybara'
